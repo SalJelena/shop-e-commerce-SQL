@@ -23,11 +23,11 @@ export async function getNote(id) {
     return rows[0]
 }
 
-export async function createNote(title, content) {
+export async function createNote(title, contents) {
     const result = await pool.query(`
         INSERT INTO notes (title, contents)
         VALUES (?, ?)
-    `, [title, content])
+    `, [title, contents])
 
     const id = result.insertId 
     return getNote(id)
