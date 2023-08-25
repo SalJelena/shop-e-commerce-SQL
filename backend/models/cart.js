@@ -8,6 +8,7 @@ module.exports = class Cart {
     static addProduct(id, productPrice) {
         fs.readFile(p, (err, fileContent) => {
             let cart = { products: [], totalPrice: 0 };
+
             if (!err) {
               cart = JSON.parse(fileContent);
             }
@@ -15,7 +16,9 @@ module.exports = class Cart {
             const existingProductIndex = cart.products.findIndex(
               prod => prod.id === id
             );
+
             const existingProduct = cart.products[existingProductIndex];
+            
             let updatedProduct;
            
             if (existingProduct) {

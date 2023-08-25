@@ -1,16 +1,9 @@
 [
   {
-    "id": "123456",
+    "id": "0.5928622063654847",
     "title": "book",
-    "imageUrl": "https://www.publicdomainpictures.net/pictures/10000/velka/1-1210009435EGmE.jpg",
-    "price": "19.99",
-    "description": "desc"
-  },
-  {
-    "id": "1234567",
-    "title": "books",
-    "imageUrl": "https://littlefreelibrary.org/wp-content/uploads/2022/07/book-spines-1.jpg",
-    "price": "12",
-    "description": "books"
+    "imageUrl": "https://media.newyorker.com/photos/59ee325f1685003c9c28c4ad/16:9/w_5616,h_3159,c_limit/Heller-Kirkus-Reviews.jpg",
+    "price": "13",
+    "description": "book 1"
   }
 ]
