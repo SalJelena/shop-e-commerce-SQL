@@ -1,5 +1,6 @@
 const path = require('path');
 
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -66,4 +67,3 @@ sequelize
         app.listen(3000);
     })
     .catch(err => console.log(err))
-
