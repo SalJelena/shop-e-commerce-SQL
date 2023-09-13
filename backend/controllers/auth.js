@@ -1,3 +1,4 @@
+const { authVerify } = require("../middlewares/authVerify");
 const User = require("../models/user");
 const { UserController } = require("./user");
 const bcrypt = require("bcrypt");
@@ -5,11 +6,17 @@ const bcrypt = require("bcrypt");
 exports.authController = {
 
     async getRegisterPage(req, res) {
-        res.send('OK')
+        res.render('auth/register', {
+            pageTitle: 'Register',
+            path: '/auth/register'
+        })
     },
 
     async getLoginPage(req, res) {
-        res.send("OK")
+        res.render('auth/login', {
+            pageTitle: 'Login',
+            path: '/auth/login'
+        })
     },
 
     async register(req, res) {
@@ -34,15 +41,16 @@ exports.authController = {
 
       res.send('OK')
   
-      //const token = JWTController.createToken({email:user.email}, true)
+      const token = authVerify.createToken({email:user.email}, true)
   
-    //   res.cookie("refresh_token", token.refresh_token, {
-    //       expires: new Date(Date.now() + 30 * 24 * 360000),
-    //       httpOnly: true,
-    //     });
+      res.cookie("refresh_token", token.refresh_token, {
+          expires: new Date(Date.now() + 30 * 24 * 360000),
+          httpOnly: true,
+        });
   
-    //   res.send({...userResponseParser(user), access_token: token.access_token});
+      res.send({...userResponseParser(user), access_token: token.access_token});
     },
+
     async login(req, res) {
       await connect();
   
@@ -52,13 +60,13 @@ exports.authController = {
         return res.status(404).json({ errors: { msg: "Please register" } });
   
       if (bcrypt.compareSync(req.body.password, user.password)) {
-        //   const token = JWTController.createToken({email:user.email}, true)
+          const token = authVerify.createToken({email:user.email}, true)
   
-        //   res.cookie("refresh_token", token.refresh_token, {
-        //       expires: new Date(Date.now() + 30 * 24 * 360000),
-        //       httpOnly: true,
-        //     });
-        //     res.send({...userResponseParser(user), access_token: token.access_token});
+          res.cookie("refresh_token", token.refresh_token, {
+              expires: new Date(Date.now() + 30 * 24 * 360000),
+              httpOnly: true,
+            });
+            res.send({...userResponseParser(user), access_token: token.access_token});
       }
   
       else res.status(400).json({ errors: { msg: "Incorrect password" } });
