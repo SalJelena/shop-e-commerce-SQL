@@ -1,5 +1,6 @@
 
 const User = require("../models/user")
+const { userResponseParser } = require("../parser/userResponseParser")
 const { connect } = require("../util/database")
 
 exports.UserController = {
@@ -21,8 +22,7 @@ exports.UserController = {
         res.status(404).json({errors: {msg: "User not found"}})
 
         else 
-        res.send('OK')
-        // res.send(userResponseParser(user))
+        res.send(userResponseParser(user))
     },
 
     async updateUser(req, res) {
