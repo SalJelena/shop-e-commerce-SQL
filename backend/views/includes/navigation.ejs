@@ -16,13 +16,22 @@
                 <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
             </li>
             <li class="main-header__item">
+                <a class="<%= path === '/auth/login' ? 'active' : '' %>" href="/auth/login">Login</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/auth/register' ? 'active' : '' %>" href="/auth/register">Register</a>
+            </li>
+            
+            <!-- TO DO: ADD ADMIN VERIFICATION
+            <li class="main-header__item">
                 <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
                 </a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
                 </a>
-            </li>
+            </li> -->
+
         </ul>
     </nav>
 </header>

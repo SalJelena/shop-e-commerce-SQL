@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const sequelize = require('../util/database')
+const {Sequelize} = require('sequelize')
+const {sequelize} = require('../util/database')
 
 const User = sequelize.define('user', {
     id: {
@@ -13,6 +13,10 @@ const User = sequelize.define('user', {
         allowNull: false
     },
     email: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
         type: Sequelize.STRING,
         allowNull: false
     }
